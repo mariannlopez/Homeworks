@@ -1,0 +1,50 @@
+## Lista de funciones de Array (por categorías)
+
+**1. Agregar / quitar elementos**
+- push()
+- pop()
+- unshift()
+- shift()
+- splice()
+
+**2. Buscar elementos**
+- find()
+- findIndex()
+- findLast()
+- findLastIndex()
+- indexOf()
+- lastIndexOf()
+- includes()
+
+**3. Recorrer / iterar**
+- forEach()
+- map()
+- filter()
+- reduce()
+- reduceRight()
+- every()
+- some()
+
+**4. Transformar / combinar**
+- concat()
+- flat()
+- flatMap()
+- join()
+- slice()
+- reverse()
+- sort()
+- fill()
+- copyWithin()
+
+**5. Convertir a texto**
+- toString()
+- toLocaleString()
+
+**6. Otras utilidades**
+- at()
+- entries()
+- keys()
+- values()
+- length
+- constructor
+- Array.isArray()
