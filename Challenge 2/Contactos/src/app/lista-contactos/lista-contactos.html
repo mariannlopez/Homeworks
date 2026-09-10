@@ -1,0 +1,12 @@
+<h3>Lista de contactos</h3>
+
+@for (contacto of contactos; track contacto.nombre) {
+  <div>
+    {{ contacto.nombre }} - {{ contacto.telefono }}
+
+    <app-eliminar-contactos
+      [nombre]="contacto.nombre"
+      (eliminar)="eliminar.emit($event)">
+    </app-eliminar-contactos>
+  </div>
+}

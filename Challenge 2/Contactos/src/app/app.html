@@ -1,0 +1,10 @@
+@if (cargando()) {
+  <p>Cargando...</p>
+} @else {
+  <app-agregar-contactos (agregar)="agregarContacto($event)"></app-agregar-contactos>
+
+  <app-lista-contactos
+    [contactos]="contactos()"
+    (eliminar)="eliminarContacto($event)">
+  </app-lista-contactos>
+}
