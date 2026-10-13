@@ -1,0 +1,16 @@
+<h1>CAJERO</h1>
+<h2>Agregar clientes</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="agregarCliente()">
+  <input formControlName="nombre" placeholder="Nombre" />
+  <input formControlName="montoRetiro" placeholder="Monto de Retiro" />
+  <input formControlName="fechaLlegada" placeholder="Fecha de Llegada" />
+  <button type="submit">Agregar Cliente</button>
+</form>
+
+<h2>Clientes en la cola</h2>
+<ul>
+  <li *ngFor="let cliente of clientes">
+    <strong>{{ cliente.nombre }}</strong> - {{ cliente.montoRetiro | currency }} - {{ cliente.fechaLlegada | date }}
+  </li>
+</ul>
