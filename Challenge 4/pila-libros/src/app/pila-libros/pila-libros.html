@@ -1,0 +1,20 @@
+<h2>Agregar Libro</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="agregarLibro()">
+  <input formControlName="nombre" placeholder="Nombre" />
+  <input formControlName="isbn" placeholder="ISBN" />
+  <input formControlName="autor" placeholder="Autor" />
+  <input formControlName="editorial" placeholder="Editorial" />
+  <button type="submit">Agregar</button>
+</form>
+
+<h2>Pila de libros</h2>
+
+@if (libros.length === 0) {
+  <p>La pila está vacía</p>
+} @else {
+  @for (libro of libros.slice().reverse(); track $index) {
+    <p>{{ libro.nombre }} - {{ libro.isbn }} - {{ libro.autor }} - {{ libro.editorial }}</p>
+  }
+}
+<button (click)="quitarLibro()">Quitar Libro</button>
