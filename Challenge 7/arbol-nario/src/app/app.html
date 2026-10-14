@@ -1,0 +1,23 @@
+<div style="display:flex; gap:24px">
+  <nav style="min-width:200px; background:#eee; padding:12px">
+    <ng-template #lista let-nodos>
+      <ul>
+        @for (n of nodos; track n.link) {
+          <li>
+            <a href="#" (click)="$event.preventDefault(); actual = n.component">{{ n.title }}</a>
+            <small> ({{ n.link }})</small>
+            @if (n.hijos.length) {
+              <ng-container *ngTemplateOutlet="lista; context: { $implicit: n.hijos }"></ng-container>
+            }
+          </li>
+        }
+      </ul>
+    </ng-template>
+
+    <ng-container *ngTemplateOutlet="lista; context: { $implicit: raiz.hijos }"></ng-container>
+  </nav>
+
+  <main>
+    <ng-container *ngComponentOutlet="actual"></ng-container>
+  </main>
+</div>
