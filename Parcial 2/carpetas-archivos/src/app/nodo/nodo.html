@@ -1,0 +1,12 @@
+<div>
+<p>{{ nodo().nombre }} ({{ nodo().tipo }}) - creado por: {{ nodo().creadoPor }}</p>
+
+  @if (nodo().tipo === 'carpeta') {
+    <button (click)="agregar('carpeta')">Nueva Carpeta</button>
+    <button (click)="agregar('archivo')">Nuevo Archivo</button>
+  }
+
+  @for (hijo of nodo().hijos; track hijo.id) {
+    <app-nodo [nodo]="hijo" />
+  }
+</div>

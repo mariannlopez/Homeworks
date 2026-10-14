@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #8aabd6;
+  text-align: center;
+  padding: 40px;
+}
+
+app-nodo {
+  display: block;
+  width: 500px;
+  margin: 20px auto;
+  text-align: left;
+}
