@@ -1,0 +1,64 @@
+<section class="tareas">
+  <h2>Mis tareas</h2>
+ 
+  <form class="formulario" (ngSubmit)="guardar()" #form="ngForm">
+    <label for="titulo">Título</label>
+    <input
+      id="titulo"
+      name="titulo"
+      type="text"
+      [(ngModel)]="titulo"
+      placeholder="Ej: Entregar informe"
+      required
+    />
+ 
+    <label for="descripcion">Descripción</label>
+    <textarea
+      id="descripcion"
+      name="descripcion"
+      rows="3"
+      [(ngModel)]="descripcion"
+      placeholder="Detalles opcionales"
+    ></textarea>
+ 
+    <div class="acciones">
+      <button type="submit" class="btn primario" [disabled]="!formularioValido">
+        {{ editando ? 'Guardar cambios' : 'Agregar tarea' }}
+      </button>
+      <button *ngIf="editando" type="button" class="btn" (click)="cancelarEdicion()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+ 
+  <p class="vacio" *ngIf="tareas.length === 0">
+    Aún no hay tareas. Escribe un título arriba para agregar la primera.
+  </p>
+ 
+  <ul class="lista" *ngIf="tareas.length > 0">
+    <li
+      *ngFor="let tarea of tareas; trackBy: trackPorId"
+      class="tarea"
+      [class.completada]="tarea.completada"
+      [class.en-edicion]="tarea.id === idEnEdicion"
+    >
+      <input
+        type="checkbox"
+        [checked]="tarea.completada"
+        (change)="alternarCompletada(tarea)"
+        [attr.aria-label]="'Marcar ' + tarea.titulo + ' como completada'"
+      />
+ 
+      <div class="contenido">
+        <strong>{{ tarea.titulo }}</strong>
+        <span *ngIf="tarea.descripcion">{{ tarea.descripcion }}</span>
+      </div>
+ 
+      <div class="acciones">
+        <button type="button" class="btn" (click)="editar(tarea)">Editar</button>
+        <button type="button" class="btn peligro" (click)="eliminar(tarea.id)">Eliminar</button>
+      </div>
+    </li>
+  </ul>
+</section>
+

@@ -1,0 +1,23 @@
+.register-container {
+  max-width: 320px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 0.6rem;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

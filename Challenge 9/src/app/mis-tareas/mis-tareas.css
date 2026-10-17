@@ -1,0 +1,76 @@
+.tareas {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  border: 1px solid #999;
+  font: inherit;
+}
+
+.acciones {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.btn {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #999;
+  background: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn.primario {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tarea {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  border: 1px solid #999;
+}
+
+.contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarea.completada .contenido {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.tarea .acciones {
+  margin: 0;
+}
