@@ -1,0 +1,13 @@
+<h3>Agregar persona</h3>
+<input [(ngModel)]="nombre" placeholder="Nombre" />
+<input [(ngModel)]="edad" type="number" placeholder="Edad" />
+
+<select [(ngModel)]="ciudadId">
+  <option value="" disabled>Selecciona una ciudad</option>
+  @for (c of ciudades(); track c.id) {
+    <option [value]="c.id">{{ c.nombre }}</option>
+  }
+</select>
+
+<button (click)="agregar()">Agregar</button>
+<p>{{ mensaje }}</p>
