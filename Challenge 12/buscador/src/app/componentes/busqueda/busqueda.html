@@ -1,0 +1,47 @@
+<!-- componentes/busqueda/busqueda.html -->
+<section>
+  <h2>Agregar producto</h2>
+
+  <input
+    type="text"
+    placeholder="Nombre (ej: Estructuras de datos)"
+    [value]="nuevoNombre()"
+    (input)="nuevoNombre.set($any($event.target).value)"
+  />
+
+  <input
+    type="number"
+    placeholder="Popularidad"
+    [value]="nuevaPopularidad()"
+    (input)="nuevaPopularidad.set(+$any($event.target).value)"
+  />
+
+  <button (click)="agregar()">Agregar</button>
+
+  @if (mensaje()) {
+    <p>{{ mensaje() }}</p>
+  }
+</section>
+
+<section>
+  <h2>Buscar</h2>
+
+  <input
+    type="text"
+    placeholder="Busca un producto (ej: Tries)"
+    [value]="query()"
+    (input)="query.set($any($event.target).value)"
+  />
+
+  <label>
+    Top K:
+    <input
+      type="number"
+      min="1"
+      [value]="k()"
+      (input)="k.set(+$any($event.target).value)"
+    />
+  </label>
+
+  <app-lista [products]="results()" />
+</section>

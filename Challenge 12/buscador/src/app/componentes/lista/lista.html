@@ -1,0 +1,8 @@
+<!-- componentes/lista/lista.html -->
+<ul>
+  @for (p of products(); track p.name) {
+    <li>{{ p.name }} <strong>({{ p.popularity }})</strong></li>
+  } @empty {
+    <li>Sin resultados</li>
+  }
+</ul>

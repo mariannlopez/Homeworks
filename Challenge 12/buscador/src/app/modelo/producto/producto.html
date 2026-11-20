@@ -1,0 +1,14 @@
+<!-- product-search.component.html -->
+<input
+  type="text"
+  placeholder="Busca un producto (ej: air)"
+  [value]="query()"
+  (input)="query.set($any($event.target).value)"
+/>
+
+<label>
+  Top K:
+  <input type="number" min="1" [value]="k()" (input)="k.set(+$any($event.target).value)" />
+</label>
+
+<app-product-list [products]="results()" />
