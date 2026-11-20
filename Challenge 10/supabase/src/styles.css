@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  background: skyblue;
+  color: #1a1a1a;
+}
+
+/* ---------- Inicio de sesión: centrado en la pantalla ---------- */
+app-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+app-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+  padding: 24px;
+  background: whitesmoke;
+  border-radius: 12px;
+} 
+
+/* ---------- Tareas y perfil: con margen ---------- */
+app-tareas,
+app-perfil {
+  display: block;
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* ---------- Detalles generales ---------- */
+input {
+  padding: 8px;
+  border: 1px solid #000000;
+}
+
+button {
+  padding: 8px 12px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+
+}
+
+
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
