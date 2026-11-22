@@ -1,4 +1,4 @@
-// app.ts
+
 import { Component } from '@angular/core';
 import { Busqueda } from './componentes/busqueda/busqueda';
 

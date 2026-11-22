@@ -1,4 +1,4 @@
-// data-structures/trie.ts
+
 import { Producto } from '../../modelo/producto/producto';
 import { Heap } from '../heap/heap';
 

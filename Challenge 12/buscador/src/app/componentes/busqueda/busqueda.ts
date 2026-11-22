@@ -1,4 +1,3 @@
-// componentes/busqueda/busqueda.ts
 import { Component, computed, inject, signal } from '@angular/core';
 import { SearchEngineService } from '../../service';
 import { Lista } from '../lista/lista';
@@ -12,22 +11,22 @@ import { Lista } from '../lista/lista';
 export class Busqueda {
   private engine = inject(SearchEngineService);
 
+  // Búsqueda
   query = signal('');
   k = signal(3);
+  mostrarTodos = signal(false);
 
-  // Campos del formulario para agregar
+ 
   nuevoNombre = signal('');
   nuevaPopularidad = signal(0);
   mensaje = signal('');
 
-  // Sirve para avisarle a "results" que el Trie cambió
   private version = signal(0);
 
   results = computed(() => {
-    this.version(); // dependencia: se recalcula cuando se inserta algo
-    return this.query().trim()
-      ? this.engine.searchTopK(this.query(), this.k())
-      : [];
+    this.version(); // dependencia: se recalcula al insertar
+    const k = this.mostrarTodos() ? Infinity : this.k();
+    return this.engine.searchTopK(this.query().trim(), k);
   });
 
   agregar(): void {

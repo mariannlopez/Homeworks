@@ -1,4 +1,4 @@
-// data-structures/heap.ts
+
 export class Heap<T> {
   private heap: T[];
 
