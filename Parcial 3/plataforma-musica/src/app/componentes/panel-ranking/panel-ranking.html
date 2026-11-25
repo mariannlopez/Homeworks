@@ -1,0 +1,32 @@
+<article class="ranking-panel">
+  <div class="ranking-panel__header">
+    <h2>TOP Canciones</h2>
+    <span class="ranking-panel__badge">Max Heap</span>
+  </div>
+
+  @if (topCanciones.length > 0) {
+    <ol class="ranking-panel__lista">
+      @for (cancion of topCanciones; track cancion.id; let i = $index) {
+        <li
+          class="ranking-panel__item"
+          [class.ranking-panel__item--activa]="cancion.id === cancionActivaId"
+          [class.ranking-panel__item--top1]="i === 0"
+          (click)="seleccionarCancion(cancion)"
+        >
+          <span class="ranking-panel__posicion">#{{ i + 1 }}</span>
+
+          <div class="ranking-panel__info">
+            <strong class="ranking-panel__titulo">{{ cancion.titulo }}</strong>
+            <small class="ranking-panel__artista">{{ cancion.artista }}</small>
+          </div>
+
+          <span class="ranking-panel__reproducciones">
+            {{ cancion.reproducciones | number }} plays
+          </span>
+        </li>
+      }
+    </ol>
+  } @else {
+    <p class="ranking-panel__vacio">No hay canciones en el ranking todavía.</p>
+  }
+</article>

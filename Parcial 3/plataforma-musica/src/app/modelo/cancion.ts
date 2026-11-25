@@ -1,0 +1,6 @@
+export interface Cancion {
+  id: string;
+  titulo: string;
+  artista: string;
+  reproducciones: number;
+}

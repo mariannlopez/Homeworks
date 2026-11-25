@@ -1,0 +1,82 @@
+<section class="buscador-panel">
+  <div class="buscador-panel__header">
+    <h2>Buscador y registro</h2>
+    <span class="buscador-panel__badge">Trie</span>
+  </div>
+
+  <div class="buscador-panel__bloque">
+    <label for="input-prefijo">Buscar por prefijo o verificar existencia</label>
+    <div class="buscador-panel__fila">
+      <input
+        id="input-prefijo"
+        type="text"
+        [ngModel]="consulta"
+        (ngModelChange)="alEscribirPrefijo($event)"
+        placeholder="Escribe el inicio de un título..."
+      />
+      <button type="button" (click)="verificarExistencia()">Buscar</button>
+    </div>
+
+    @if (busquedaRealizada) {
+      <p class="buscador-panel__estado">
+        @if (existeResultado) {
+          La canción existe en el Trie.
+        } @else {
+          No se encontró coincidencia exacta con ese título.
+        }
+      </p>
+    }
+
+    @if (sugerencias.length > 0) {
+      <ul class="buscador-panel__lista">
+        @for (cancion of sugerencias; track cancion.id) {
+          <li
+            class="buscador-panel__item"
+            (click)="elegirSugerencia(cancion)"
+          >
+            <div>
+              <strong>{{ cancion.titulo }}</strong>
+              <small>{{ cancion.artista }}</small>
+            </div>
+            <span>{{ cancion.reproducciones | number }} plays</span>
+          </li>
+        }
+      </ul>
+    } @else if (busquedaRealizada) {
+      <p class="buscador-panel__vacio">Sin sugerencias para este prefijo.</p>
+    }
+  </div>
+
+  <div class="buscador-panel__bloque buscador-panel__bloque--separado">
+    <h3>Insertar canción</h3>
+    <div class="buscador-panel__formulario">
+      <input
+        type="text"
+        [(ngModel)]="nuevoTitulo"
+        placeholder="Título de la canción"
+      />
+      <input
+        type="text"
+        [(ngModel)]="nuevoArtista"
+        placeholder="Artista"
+      />
+      <input
+        type="number"
+        [(ngModel)]="nuevasReproducciones"
+        placeholder="Reproducciones"
+        min="0"
+      />
+      <button
+        type="button"
+        (click)="guardarCancion()"
+        [disabled]="!nuevoTitulo.trim() || !nuevoArtista.trim() || nuevasReproducciones === null || nuevasReproducciones < 0"
+      >
+        Insertar
+      </button>
+    </div>
+
+    @if (mensajeInsercion) {
+      <p class="buscador-panel__estado">{{ mensajeInsercion }}</p>
+    }
+  </div>
+</section>

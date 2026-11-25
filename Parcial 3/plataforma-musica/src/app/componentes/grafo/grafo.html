@@ -1,0 +1,60 @@
+<article class="grafo-panel">
+  <div class="grafo-panel__header">
+    <h2>Canciones relacionadas</h2>
+    <span class="grafo-panel__badge">Grafo no dirigido</span>
+  </div>
+
+  @if (cancionBase) {
+    <p class="grafo-panel__base">
+      Canción actual: <strong>{{ cancionBase.titulo }}</strong>
+      <span>({{ cancionBase.artista }})</span>
+    </p>
+  } @else {
+    <p class="grafo-panel__vacio">Selecciona una canción para explorar sus conexiones.</p>
+  }
+
+  @if (relacionadas.length > 0) {
+    <ul class="grafo-panel__lista">
+      @for (relacionada of relacionadas; track relacionada.id) {
+        <li
+          class="grafo-panel__item"
+          (click)="seleccionarCancion(relacionada)"
+        >
+          <div class="grafo-panel__info">
+            <strong>{{ relacionada.titulo }}</strong>
+            <small>{{ relacionada.artista }}</small>
+          </div>
+          <span class="grafo-panel__accion">Ver similares →</span>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="grafo-panel__vacio">Esta canción aún no tiene canciones conectadas.</p>
+  }
+
+  @if (cancionBase && catalogo.length > 1) {
+    <div class="grafo-panel__conexion">
+      <label for="select-destino">Conectar con otra canción:</label>
+      <div class="grafo-panel__controles">
+        <select id="select-destino" [(ngModel)]="idDestinoSeleccionado">
+          <option value="">Elige una canción...</option>
+          @for (item of catalogo; track item.id) {
+            @if (item.id !== cancionBase.id) {
+              <option [value]="item.id">
+                {{ item.titulo }} — {{ item.artista }}
+              </option>
+            }
+          }
+        </select>
+
+        <button
+          type="button"
+          (click)="conectarConBase()"
+          [disabled]="!idDestinoSeleccionado"
+        >
+          Conectar
+        </button>
+      </div>
+    </div>
+  }
+</article>

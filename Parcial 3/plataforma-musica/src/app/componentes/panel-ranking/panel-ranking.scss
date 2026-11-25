@@ -1,0 +1,67 @@
+@use '../../styles/variables' as v;
+
+.ranking-panel {
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  background-color: v.$color-panel;
+  border-radius: 0;
+  padding: 1.25rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+  }
+
+  &__badge {
+    font-size: 0.78rem;
+    color: v.$color-texto-muted;
+  }
+
+  &__lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.6rem 0.65rem;
+    border-radius: 0;
+  }
+
+  &__posicion {
+    width: 1.6rem;
+    font-size: 0.85rem;
+    color: v.$color-texto-muted;
+    text-align: center;
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__titulo {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  &__artista,
+  &__reproducciones,
+  &__vacio {
+    font-size: 0.82rem;
+    color: v.$color-texto-muted;
+  }
+}

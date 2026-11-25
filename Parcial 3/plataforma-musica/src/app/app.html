@@ -1,0 +1,22 @@
+<app-buscador-trie
+  [sugerencias]="sugerencias"
+  (consultarPrefijo)="onConsultarPrefijo($event)"
+  (seleccionarCancion)="onCancionSeleccionada($event)"
+  (insertarCancion)="onInsertarCancion($event)"
+/>
+
+<app-panel-ranking
+  [topCanciones]="topCanciones"
+  [cancionActivaId]="cancionSeleccionada?.id ?? null"
+  (cancionSeleccionada)="onCancionSeleccionada($event)"
+/>
+
+<app-grafo
+  [cancionBase]="cancionSeleccionada"
+  [relacionadas]="relacionadas"
+  [catalogo]="catalogo"
+  (cancionSeleccionada)="onCancionSeleccionada($event)"
+  (conectarCanciones)="onConectarCanciones($event)"
+/>
+
+<router-outlet />
